@@ -31,8 +31,8 @@ class Board2D
 		vector	action			()									;
 		Board2D	copy				()									;
 		Board2D	result			( int , int , int )	;
-		void		setPlayer		( int )							;
 		void		setAt				( int , int , int )	;
+		void		setPlayer		( int )							;
 		void		setSize			( int )							;
 } ;
 
@@ -64,4 +64,58 @@ Board2D::Board2D ( int n )
 	setPlayer ( 1 ) ;
 	int [ n ] [ n ] b = 0 ;
 	board = b ;
+}
+
+Board2D::Board2D ( int n , int [] [] )
+{
+
+}
+
+
+/**
+	*	getPlayer
+	*
+	*	Get the current player.
+	*
+	*	@return	player	1 or 2
+	*/
+int Board2D::setPlayer ( int p )
+{
+	return player ;
+}
+
+/**
+	*	getSize
+	*
+	*	Get the size of the board.
+	*
+	*	@return	board size (n x n)
+	*/
+int Board2D::getSize ()
+{
+	return size ;
+}
+
+/**
+	*	setPlayer
+	*
+	*	Set the player to the given value p.
+	*
+	*	@param	p		player	1 or 2
+	*/
+void Board2D::setPlayer ( int p )
+{
+	player = p ;
+}
+
+/**
+	*	setSize
+	*
+	*	Set the size of the board to the given value n.
+	*
+	*	@param	n		board size (n x n)
+	*/
+void Board2D::setSize ( int n )
+{
+	size = n ;
 }
