@@ -71,6 +71,91 @@ Board2D::Board2D ( int n , int [] [] )
 
 }
 
+/**
+	*	isTerminal
+	*
+	*	This checks to see if the board is completely played.
+	*/
+bool Board2D::isTerminal ()
+{
+	int p1 = 0 ;
+	int p2 = 0 ;
+
+	//	Check the Diagonal "\"
+	for ( int i = 0 ; i < size ; i ++ )
+	{
+		if ( board [ i ] [ i ] == 1 )
+			p1 ++ ;
+		else if ( board [ i ] [ i ] == 2 )
+			p2 ++ ;
+	}
+	if ( p1 == size || p2 == size )
+		return true ;
+
+	//	Check the Diagonal "/"
+	p1 = 0 ;
+	p2 = 0 ;
+	for ( int i = 0 , j = size - 1 ; i < size ; i ++ , j -- )
+	{
+		if ( board [ i ] [ i ] == 1 )
+			p1 ++ ;
+		else if ( board [ i ] [ i ] == 2 )
+			p2 ++ ;
+	}
+	if ( p1 == size || p2 == size )
+		return true ;
+
+	//	Check the horizontal
+	p1 = 0 ;
+	p2 = 0 ;
+	for ( int i = 0 ; i < size ; i ++ )
+	{
+		for ( int j = 0 ; j < size ; j ++ )
+		{
+			if ( board [ i ] [ j ] == 1 )
+				p1 ++ ;
+			else if ( board [ i ] [ j ] == 2 )
+				p2 ++ ;
+		}
+		if ( p1 == size || p2 == size )
+			return true ;
+		else
+		{
+			p1 = 0 ;
+			p2 = 0 ;
+		}
+	}
+
+	//	Check the vertical
+	p1 = 0 ;
+	p2 = 0 ;
+	for ( int i = 0 ; i < size ; i ++ )
+	{
+		for ( int j = 0 ; j < size ; j ++ )
+		{
+			if ( board [ j ] [ i ] == 1 )
+				p1 ++ ;
+			else if ( board [ j ] [ i ] == 2 )
+				p2 ++ ;
+		}
+		if ( p1 == size || p2 == size )
+			return true ;
+		else
+		{
+			p1 = 0 ;
+			p2 = 0 ;
+		}
+	}
+
+	//	All spaces are full
+	for ( int i = 0 ; i < size ; i ++ )
+		for ( int j = 0 ; j < size ; j ++ )
+			if ( board [ i ] [ j ] == 0 )
+				return false ;
+
+	//	The board is full
+	return true ;
+}
 
 /**
 	*	getPlayer
